@@ -1,2 +1,4 @@
-data/raw/
+data/
+*.db
 *.csv
+*.zip

@@ -88,6 +88,7 @@ Tải về và đặt vào thư mục `data/raw/`:
 | Cash loans | Pensioner | 5.47% | 6.55 |
 
 → **Insight:** Revolving loans có tỷ lệ vỡ nợ thấp hơn nhưng số nợ quá hạn trung bình **cao gấp đôi** Cash loans
+
 ## Công nghệ sử dụng
 - **Python**: pandas, numpy, matplotlib, seaborn, xgboost, scikit-learn
 - **SQL**: SQLite — phân tích phân khúc, window functions
