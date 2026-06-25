@@ -103,11 +103,11 @@ credit-risk-analytics/
 
 │  └── processed/    ← dữ liệu sau khi làm sạch
 
-│  ── 01_EDA.ipynb
+── 01_EDA.ipynb
 
-│  ── 02_SQL_Analysis.sql
+── 02_SQL_Analysis.sql
 
-│  ── 03_Modeling.ipynb
+── 03_Modeling.ipynb
 
 ├── dashboard/
 
