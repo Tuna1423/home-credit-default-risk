@@ -38,6 +38,56 @@ Tải về và đặt vào thư mục `data/raw/`:
 | Số features sử dụng | 185 |
 | Số mẫu huấn luyện | 246.008 |
 
+## SQL Analysis — Chi tiết phân tích
+
+### Query 1: Default Rate theo Giới tính & Học vấn
+| Giới tính | Học vấn | Tổng hồ sơ | Tỷ lệ vỡ nợ |
+|-----------|---------|------------|-------------|
+| Nam | Lower secondary | 1.505 | **13.49%** |
+| Nam | Secondary/special | 74.924 | 11.36% |
+| Nữ | Lower secondary | 2.311 | 9.26% |
+| Nữ | Higher education | 50.289 | 4.85% |
+| Nữ | Academic degree | 100 | 3.00% |
+
+→ **Insight:** Nam giới có học vấn thấp là nhóm rủi ro cao nhất (13.49%)
+
+---
+
+### Query 2: Risk Ranking theo Loại thu nhập
+| Hạng | Loại thu nhập | Tổng | Tỷ lệ vỡ nợ |
+|------|--------------|------|-------------|
+| 1 | Maternity leave | 5 | **40.00%** |
+| 2 | Unemployed | 22 | **36.36%** |
+| 3 | Working | 158.774 | 9.59% |
+| 4 | Commercial associate | 71.617 | 7.48% |
+| 6 | Pensioner | 55.362 | 5.39% |
+
+→ **Insight:** Nhóm không có thu nhập ổn định rủi ro cao gấp 4x nhóm đi làm
+
+---
+
+### Query 3: Running Total Default theo Nhóm tuổi
+| Nhóm tuổi | Tổng hồ sơ | Vỡ nợ | Tỷ lệ | Cộng dồn |
+|-----------|-----------|-------|-------|----------|
+| 20-30 | 52.806 | 6.019 | **11.40%** | 6.019 |
+| 31-40 | 83.117 | 7.719 | 9.29% | 13.738 |
+| 41-50 | 74.401 | 5.618 | 7.55% | 19.356 |
+| 51-60 | 67.819 | 4.024 | 5.93% | 23.380 |
+| 60+ | 29.368 | 1.445 | **4.92%** | 24.825 |
+
+→ **Insight:** Nhóm 20-30 tuổi chiếm 24% tổng hồ sơ nhưng đóng góp **24% tổng số vỡ nợ**
+
+---
+
+### Query 4: Join Bureau — Nợ quá hạn theo Loại hợp đồng
+| Loại hợp đồng | Loại thu nhập | Tỷ lệ vỡ nợ | TB nợ quá hạn |
+|--------------|--------------|-------------|---------------|
+| Cash loans | Working | 9.94% | 68.88 |
+| Cash loans | Commercial associate | 7.84% | 37.27 |
+| Revolving loans | Working | 6.43% | **124.62** |
+| Cash loans | Pensioner | 5.47% | 6.55 |
+
+→ **Insight:** Revolving loans có tỷ lệ vỡ nợ thấp hơn nhưng số nợ quá hạn trung bình **cao gấp đôi** Cash loans
 ## Công nghệ sử dụng
 - **Python**: pandas, numpy, matplotlib, seaborn, xgboost, scikit-learn
 - **SQL**: SQLite — phân tích phân khúc, window functions
@@ -52,13 +102,11 @@ credit-risk-analytics/
 
 │  └── processed/    ← dữ liệu sau khi làm sạch
 
-├── notebooks/
+│  ── 01_EDA.ipynb
 
-│  ├── 01_EDA.ipynb
+│  ── 02_SQL_Analysis.sql
 
-│  ├── 02_SQL_Analysis.sql
-
-│  └── 03_Modeling.ipynb
+│  ── 03_Modeling.ipynb
 
 ├── dashboard/
 
